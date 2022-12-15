@@ -5,10 +5,10 @@ import utils
 app = Flask(__name__)
 
 
-@app.route("/icon/get", methods=["GET"])
+@app.route("/get", methods=["GET"])
 def icon_get():
     """
-    url中需要传参: ?website=url
+    url中需要传参: ?url={target website}
     """
     url = request.args.get("website")
     if url is None:
