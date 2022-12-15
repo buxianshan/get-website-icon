@@ -25,12 +25,22 @@ def get_icon(url):
         return []
     items = html.xpath('//head/link[contains(@rel,"icon")]')
     icons = [i.get("href") for i in items]
-    # 如果href中是相对路径, 则补上首页地址
+    # 处理href中为相对路径的情况
     for i in range(len(icons)):
         if icons[i].startswith("http"):
-            pass
-        else:
+            continue
+        if icons[i].startswith("/"):
             icons[i] = home_page + icons[i]
+            continue
+        # href为相对路径且不是以/开头
+        if "#" in url:
+            base_url = url.split("#")[0]
+        else:
+            base_url = url
+        sections = base_url.split("/")
+        sections[-1] = icons[i]
+        icons[i] = "/".join(sections)
+
     return icons
 
 
