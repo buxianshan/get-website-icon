@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Roboto, 'Segoe UI', Arial, 'Microsoft Yahei', sans-serif;
+            font-size: 81.25%;
+        }
+
+        #content {
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            /*height: calc(100vh - 56px);*/
+            min-width: fit-content;
+            padding-top: 56px;
+            position: relative;
+            z-index: 1;
+        }
+
+        #imageContainer {
+            width: 500px;
+            height: 150px;
+            margin-top: 100px;
+        }
+
+        #image {
+            max-width: 500px;
+            max-height: 100px;
+        }
+
+        #inputWrapper {
+            position: relative;
+            display: inherit;
+            margin-bottom: 16px;
+            height: 44px;
+            font-size: 16px;
+            box-shadow: 0 1px 6px 0 #20212447;
+            border-radius: calc(0.5 * 44px);
+            width: 561px;
+        }
+
+        #input {
+            width: 100%;
+            border: none;
+            border-radius: calc(0.5 * 44px);
+            padding-inline-end: 44px;
+            padding-inline-start: 52px;
+            position: relative;
+            outline: 0;
+        }
+
+        #search {
+            right: 12px;
+            position: absolute;
+        }
+
+        #searchIcon {
+            height: 24px;
+            width: 24px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        #container {
+            width: 561px;
+            display: flex;
+            height: 230px;
+            justify-content: center;
+            flex-wrap: wrap;
+            overflow: hidden;
+        }
+
+        .tile {
+            align-items: center;
+            border-radius: 4px;
+            box-sizing: border-box;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            height: 112px;
+            width: 112px;
+            opacity: 1;
+            outline: 0;
+            position: relative;
+            text-decoration: none;
+            /*transition-duration: .3s;*/
+            /*transition-property: left,top;*/
+            /*transition-timing-function: ease-in-out;*/
+        }
+
+        .tile:hover {
+            background-color: #e8e8e9;
+        }
+
+        .tile-icon {
+            align-items: center;
+            background-color: rgba(241, 243, 244, 1);
+            display: flex;
+            flex-shrink: 0;
+            height: 48px;
+            width: 48px;
+            justify-content: center;
+            margin-top: 16px;
+            border-radius: 50%;
+        }
+
+        .tile-icon img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .tile-title {
+            direction: ltr;
+            align-items: center;
+            border-radius: 18px;
+            color: black;
+            display: flex;
+            height: 32px;
+            width: 88px;
+            line-height: 16px;
+            margin-top: 6px;
+            padding: 2px 8px;
+        }
+
+        .tile-title span {
+            font-weight: 400;
+            overflow: hidden;
+            text-align: center;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            width: 100%;
+        }
+
+    </style>
+</head>
+<body>
+<div id="content">
+    <div id="imageContainer">
+        <img id="image" src="https://buxianshan.oss-cn-beijing.aliyuncs.com/get-website-icon/logo.png">
+    </div>
+    <div id="inputWrapper">
+        <input id="input" type="search" autocomplete="off" spellcheck="false" role="combobox"
+               placeholder="输入一个网址, 获取网站图标" aria-live="polite">
+        <div id="search">
+            <div id="searchIcon">
+                <!--search.svg-->
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#5F6368">
+                    <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                </svg>
+            </div>
+
+        </div>
+
+    </div>
+    <div id="container">
+        <a class="tile" title="buxianshan">
+            <div class="tile-icon">
+                <img src="https://buxianshan.oss-cn-beijing.aliyuncs.com/favicon.ico">
+            </div>
+            <div class="tile-title title-ltr">
+                <span>buxianshan</span>
+            </div>
+        </a>
+        <a class="tile" title="buxianshan">
+            <div class="tile-icon">
+                <img src="https://buxianshan.oss-cn-beijing.aliyuncs.com/favicon.ico">
+            </div>
+            <div class="tile-title title-ltr">
+                <span>buxianshan</span>
+            </div>
+        </a>
+    </div>
+</div>
+
+<script>
+
+</script>
+</body>
+</html>

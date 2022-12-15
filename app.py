@@ -1,12 +1,20 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 import utils
 
 
 app = Flask(__name__)
 
 
+@app.route("/", methods=["GET"])
+def home():
+    """
+    主页
+    """
+    return render_template("index.html")
+
+
 @app.route("/get", methods=["GET"])
-def icon_get():
+def get_icon():
     """
     url中需要传参: ?url={target website}
     """
