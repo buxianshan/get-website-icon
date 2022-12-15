@@ -30,7 +30,7 @@ def get_icon(url):
         if icons[i].startswith("http"):
             continue
         if icons[i].startswith("//"):
-            # 以两个//开头的情况, 把协议名加到签名即可http(s)
+            # 以两个//开头的情况, 把协议名加到前面即可http(s)
             icons[i] = url.split('/')[0] + icons[i]
             continue
         if icons[i].startswith("/"):
