@@ -10,7 +10,7 @@ def icon_get():
     """
     url中需要传参: ?url={target website}
     """
-    url = request.args.get("website")
+    url = request.args.get("url")
     if url is None:
         return jsonify({"errorMsg": "website url is null!"})
     return jsonify(utils.get_icon(url))
