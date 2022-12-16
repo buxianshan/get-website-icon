@@ -21,33 +21,32 @@ def get_icon(url):
         return data[home_page]
     response = requests.get(url, headers=HEADERS, timeout=5, verify=False)
     html = etree.HTML(response.text)
-    if html is None:
-        return []
-
-    # items = html.xpath('//head/link[contains(@rel,"icon")]')
-    # xpath兼容大小写
-    selector = '//head/link[contains(translate(@rel,"ABCDEFGHIJKLMNOPQRSTUVWXYZ","abcdefghijklmnopqrstuvwxyz"),"icon")]'
-    items = html.xpath(selector)
-    icons = [i.get("href") for i in items]
-    # 处理href中为相对路径的情况
-    for i in range(len(icons)):
-        if icons[i].startswith("http"):
-            continue
-        if icons[i].startswith("//"):
-            # 以两个//开头的情况, 把协议名加到前面即可http(s)
-            icons[i] = url.split('/')[0] + icons[i]
-            continue
-        if icons[i].startswith("/"):
-            icons[i] = home_page + icons[i]
-            continue
-        # href为相对路径且不是以/开头
-        if "#" in url:
-            base_url = url.split("#")[0]
-        else:
-            base_url = url
-        sections = base_url.split("/")
-        sections[-1] = icons[i]
-        icons[i] = "/".join(sections)
+    icons = []
+    if html is not None:
+        # items = html.xpath('//head/link[contains(@rel,"icon")]')
+        # xpath兼容大小写
+        selector = '//head/link[contains(translate(@rel,"ABCDEFGHIJKLMNOPQRSTUVWXYZ","abcdefghijklmnopqrstuvwxyz"),"icon")]'
+        items = html.xpath(selector)
+        icons = [i.get("href") for i in items]
+        # 处理href中为相对路径的情况
+        for i in range(len(icons)):
+            if icons[i].startswith("http"):
+                continue
+            if icons[i].startswith("//"):
+                # 以两个//开头的情况, 把协议名加到前面即可http(s)
+                icons[i] = url.split('/')[0] + icons[i]
+                continue
+            if icons[i].startswith("/"):
+                icons[i] = home_page + icons[i]
+                continue
+            # href为相对路径且不是以/开头
+            if "#" in url:
+                base_url = url.split("#")[0]
+            else:
+                base_url = url
+            sections = base_url.split("/")
+            sections[-1] = icons[i]
+            icons[i] = "/".join(sections)
 
     # 如果通过解析html没有找到图标(有的网站不写)，则尝试直接获取/favicon.icon
     if len(icons) == 0:
