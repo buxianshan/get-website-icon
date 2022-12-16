@@ -2,6 +2,8 @@
 
 这是一个方便获取指定网站图标的工具。
 
+可以使用在线工具或者API。
+
 ## 在线工具
 
 主页: [https://icon.bxs.ink](https://icon.bxs.ink)
