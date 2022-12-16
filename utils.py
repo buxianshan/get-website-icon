@@ -19,7 +19,7 @@ def get_icon(url):
     data = {}
     if home_page in data.keys():
         return data[home_page]
-    response = requests.get(url, headers=HEADERS, timeout=5)
+    response = requests.get(url, headers=HEADERS, timeout=5, verify=False)
     html = etree.HTML(response.text)
     if html is None:
         return []
