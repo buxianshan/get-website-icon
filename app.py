@@ -19,9 +19,13 @@ def get_icon():
     url中需要传参: ?url={target website}
     """
     url = request.args.get("url")
-    if url is None:
-        return jsonify({"errorMsg": "website url is null!"})
-    return jsonify(utils.get_icon(url))
+    # if url is None:
+    #     return jsonify({"errorMsg": "website url is null!"})
+    try:
+        icons = utils.get_icon(url)
+        return jsonify({"success": True, "data": icons})
+    except Exception as e:
+        return jsonify({"success": False, "data": [], "errorMsg": str(e)})
 
 
 if __name__ == "__main__":
