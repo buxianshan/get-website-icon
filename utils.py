@@ -23,7 +23,11 @@ def get_icon(url):
     html = etree.HTML(response.text)
     if html is None:
         return []
-    items = html.xpath('//head/link[contains(@rel,"icon")]')
+
+    # items = html.xpath('//head/link[contains(@rel,"icon")]')
+    # xpath兼容大小写
+    selector = '//head/link[contains(translate(@rel,"ABCDEFGHIJKLMNOPQRSTUVWXYZ","abcdefghijklmnopqrstuvwxyz"),"icon")]'
+    items = html.xpath(selector)
     icons = [i.get("href") for i in items]
     # 处理href中为相对路径的情况
     for i in range(len(icons)):
