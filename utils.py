@@ -49,6 +49,13 @@ def get_icon(url):
         sections[-1] = icons[i]
         icons[i] = "/".join(sections)
 
+    # 如果通过解析html没有找到图标(有的网站不写)，则尝试直接获取/favicon.icon
+    if len(icons) == 0:
+        default_icon = f"{home_page}/favicon.ico"
+        response = requests.get(default_icon, headers=HEADERS, timeout=5, verify=False)
+        if response.status_code == 200:
+            icons.append(default_icon)
+
     return icons
 
 
