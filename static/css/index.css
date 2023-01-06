@@ -137,3 +137,8 @@ body {
     margin-top: 100px;
     color: gray;
 }
+
+.errorMsgBox {
+    max-width: 500px;
+    margin-top: 50px;
+}

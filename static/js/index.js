@@ -33,9 +33,16 @@ $(function () {
                             </a>`)
                     $("#container").append(div)
                 }
+                let tip = "<br/>If you think this is a bug, please <a href='https://github.com/buxianshan/get-website-icon/issues' target=\"_blank\">create an issue in here.<a/>"
+                if (data.success === false) {
+                    $("#container").append($(`<p class="errorMsgBox">API error.${tip}</p>`))
+                } else if (data.data.length === 0) {
+                    $("#container").append($(`<p class="errorMsgBox">API returns 0 icon.${tip}</p>`))
+                }
             },
             error: function (e) {
                 $("#container").empty()
+                $("#container").append($(`<p class="errorMsgBox">${e.errorText}</p>`))
                 console.log(e)
             }
         })
