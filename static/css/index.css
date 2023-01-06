@@ -2,6 +2,8 @@
 body {
     font-family: Roboto, 'Segoe UI', Arial, 'Microsoft Yahei', sans-serif;
     font-size: 81.25%;
+    min-height: 100vh;
+    position: relative;
 }
 
 #content {
@@ -141,4 +143,20 @@ body {
 .errorMsgBox {
     max-width: 500px;
     margin-top: 50px;
+}
+
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding-bottom: 1em;
+    color: #bbb;
+    display: flex;
+    justify-content: center;
+}
+
+footer a {
+    text-decoration: none;
+    color: #bbb;
 }
