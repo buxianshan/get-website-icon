@@ -1,5 +1,6 @@
 import requests
 from lxml import etree
+from loguru import logger
 
 HEADERS = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 '
@@ -67,12 +68,4 @@ def get_website_home_page(url):
 
 
 if __name__ == '__main__':
-    # test
-    # print(get_icon("https://esxi.bxs.ink:8043"))
-    # woc 这个得写 https://esxi.bxs.ink:8043/ui/favicon.svg
-    # 这咋办，首页不是/ 而是 /ui
-    # https://esxi.bxs.ink:8043/ui/#/host
-    # https://help.fanruan.com/finebi/doc-view-263.html
-    # a = "https://esxi.bxs.ink:8043/ui/".split("/")
-    # print(a)
-    print(get_icon("https://img.alicdn.com/tfs/TB1_ZXuNcfpK1RjSZFOXXa6nFXa-32-32.ico"))
+    print(get_icon("https://bxs.ink"))
