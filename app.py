@@ -11,9 +11,6 @@ CORS(app, resources=r'/*')
 
 @app.route("/", methods=["GET"])
 def home():
-    """
-    主页
-    """
     return render_template("index.html")
 
 
@@ -23,13 +20,17 @@ def get_icon():
     url中需要传参: ?url={target website}
     """
     url = request.args.get("url")
-    # if url is None:
-    #     return jsonify({"errorMsg": "website url is null!"})
     try:
         icons = utils.get_icon(url)
         return jsonify({"success": True, "data": icons})
     except Exception as e:
         return jsonify({"success": False, "data": [], "errorMsg": str(e)})
+
+
+@app.before_request
+def before():
+    if not request.path.startswith("/static"):
+        logger.info(f"[visited] {request.url} [remote address] {request.remote_addr}")
 
 
 if __name__ == "__main__":
