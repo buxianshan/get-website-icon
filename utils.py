@@ -55,6 +55,7 @@ def get_icon(url):
         if response.status_code == 200:
             icons.append(default_icon)
 
+    logger.info(f"get {len(icons)} icons from {url}\nicons: {icons}")
     return icons
 
 
@@ -67,4 +68,11 @@ def get_website_home_page(url):
 
 if __name__ == '__main__':
     # test
-    print(get_icon("https://bxs.ink/"))
+    # print(get_icon("https://esxi.bxs.ink:8043"))
+    # woc 这个得写 https://esxi.bxs.ink:8043/ui/favicon.svg
+    # 这咋办，首页不是/ 而是 /ui
+    # https://esxi.bxs.ink:8043/ui/#/host
+    # https://help.fanruan.com/finebi/doc-view-263.html
+    # a = "https://esxi.bxs.ink:8043/ui/".split("/")
+    # print(a)
+    print(get_icon("https://img.alicdn.com/tfs/TB1_ZXuNcfpK1RjSZFOXXa6nFXa-32-32.ico"))
