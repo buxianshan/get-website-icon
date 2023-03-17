@@ -14,6 +14,14 @@
 
 ![主页](/doc/homepage.png)
 
+## Docker私有部署
+
+```bash
+# 创建运行容器
+docker run -d -p 5000:5000 --name icon-server buxianshan/icon-server
+```
+
+访问5000端口即可。
 
 ## API
 
