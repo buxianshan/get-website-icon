@@ -12,7 +12,7 @@ class InterceptHandler(logging.Handler):
 
 
 ROOT_PATH = os.path.dirname(os.path.realpath(__file__))
-logger.add(f"{ROOT_PATH}/icon-server.log")
+logger.add(f"{ROOT_PATH}/server.log")
 logging.basicConfig(handlers=[InterceptHandler()], level='INFO')
 
 # 如果是linux系统，则日志不记录基本的请求响应信息
