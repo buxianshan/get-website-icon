@@ -22,4 +22,4 @@ jobs:
       run: docker build . --file Dockerfile --tag icon-server:latest
       
     - name: Push Image to Docker Hub
-      run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/icon-server:latest
+      run: docker push icon-server:latest
