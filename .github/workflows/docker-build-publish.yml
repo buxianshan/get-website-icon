@@ -1,0 +1,25 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Login to Docker Hub
+      run: docker login --username=${{ secrets.DOCKERHUB_USERNAME }} --password ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
+
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag icon-server:latest
+      
+    - name: Push Image to Docker Hub
+      run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/icon-server:latest
