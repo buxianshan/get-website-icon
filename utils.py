@@ -56,6 +56,9 @@ def get_icon(url):
         if response.status_code == 200:
             icons.append(default_icon)
 
+    # 去重
+    icons = list(set(icons))
+
     logger.info(f"get {len(icons)} icons from {url}\nicons: {icons}")
     return icons
 
